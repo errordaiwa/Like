@@ -7,20 +7,20 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 
 public class DBConnectionPool {
-	private static final String CONFIG_NAME = "mysql";
-	private static final String MAX_CONNECTION_NUM = "mysql.config.maxConnectionNum";
-	private static final String MYSQL_IP = "mysql.ip";
-	private static final String MYSQL_PORT = "mysql.port";
-	private static final String MYSQL_SCHEMA_NAME = "mysql.schemaName";
-	private static final String MYSQL_USER_NAME = "mysql.userName";
-	private static final String MYSQL_PASSWORD = "mysql.password";
+	private static final String CONFIG_NAME = "cn.com.sina.like.DAO.mysql";
+	private static final String MAX_CONNECTION_NUM = "config.maxConnectionNum";
+	private static final String MYSQL_IP = "config.ip";
+	private static final String MYSQL_PORT = "config.port";
+	private static final String MYSQL_USER_NAME = "config.userName";
+	private static final String MYSQL_PASSWORD = "config.password";
+	
+	private static final String DATABASE_NAME = "WeiboLike";
 
 	private int maxConnectionNum;
 	private Vector<Connection> idleConnectionPool;
 	private Vector<Connection> inUsedConnectionPool;
 	private String mysqlIP;
 	private String mysqlPort;
-	private String mysqlSchemaName;
 	private String mysqlUserName;
 	private String mysqlPassword;
 
@@ -32,7 +32,6 @@ public class DBConnectionPool {
 				.valueOf(bundle.getString(MAX_CONNECTION_NUM));
 		mysqlIP = bundle.getString(MYSQL_IP);
 		mysqlPort = bundle.getString(MYSQL_PORT);
-		mysqlSchemaName = bundle.getString(MYSQL_SCHEMA_NAME);
 		mysqlUserName = bundle.getString(MYSQL_USER_NAME);
 		mysqlPassword = bundle.getString(MYSQL_PASSWORD);
 		idleConnectionPool = new Vector<Connection>(maxConnectionNum);
@@ -53,7 +52,7 @@ public class DBConnectionPool {
 		if (idleConnectionPool.size() + inUsedConnectionPool.size() < maxConnectionNum) {
 			try {
 				String mysqlUri = "jdbc:mysql://" + mysqlIP + ":" + mysqlPort
-						+ "/" + mysqlSchemaName;
+						+ "/" + DATABASE_NAME;
 				Connection con = DriverManager.getConnection(mysqlUri,
 						mysqlUserName, mysqlPassword);
 				inUsedConnectionPool.add(con);

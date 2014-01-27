@@ -1,0 +1,6 @@
+15:10:32.345 [main] ERROR BaseDAO - Failed to excute SQL!
+15:10:32.347 [main] ERROR BaseDAO - Error msg is: Data truncation: Incorrect datetime value: '1390720229975' for column 'ctime' at row 1
+15:10:32.387 [main] ERROR BaseDAO - Failed to excute SQL!
+15:10:32.387 [main] ERROR BaseDAO - Error msg is: Data truncation: Incorrect datetime value: '1390720232347' for column 'ctime' at row 1
+15:12:18.145 [main] ERROR BaseDAO - Failed to excute SQL!
+15:12:18.773 [main] ERROR BaseDAO - Error msg is: Data truncation: Incorrect datetime value: '1390720296141' for column 'ctime' at row 1

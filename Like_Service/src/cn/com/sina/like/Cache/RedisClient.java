@@ -1,9 +1,7 @@
 package cn.com.sina.like.Cache;
 
-import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.ResourceBundle;
 
 import redis.clients.jedis.JedisPoolConfig;
@@ -14,16 +12,16 @@ import redis.clients.jedis.ShardedJedisPool;
 public enum RedisClient {
 	INSTANCE;
 	
-	private static final String CONFIG_NAME = "redis";
-	private static final String MAX_ACTIVE = "redis.pool.maxActive";
-	private static final String MAX_IDLE = "redis.pool.maxIdle";
-	private static final String MAX_WAIT = "redis.pool.maxWait";
-	private static final String TEST_ON_BORROW = "redis.pool.testOnBorrow";
-	private static final String TEST_ON_RETURN = "redis.pool.testOnReturn";
-	private static final String SERVER_NUM = "redis.server.count";
-	private static final String REDIS_IP_PERFIX = "redis";
-	private static final String REDIS_IP_SUFFIX = ".ip";
-	private static final String REDIS_PORT = "redis.port";
+	private static final String CONFIG_NAME = "cn.com.sina.like.Cache.redis";
+	private static final String MAX_ACTIVE = "config.maxActive";
+	private static final String MAX_IDLE = "config.maxIdle";
+	private static final String MAX_WAIT = "config.maxWait";
+	private static final String TEST_ON_BORROW = "config.testOnBorrow";
+	private static final String TEST_ON_RETURN = "config.testOnReturn";
+	private static final String SERVER_NUM = "server.count";
+	private static final String IP_PERFIX = "server";
+	private static final String IP_SUFFIX = ".ip";
+	private static final String PORT = "server.port";
 	
 	private static ShardedJedisPool pool;
 
@@ -43,8 +41,8 @@ public enum RedisClient {
 		List<JedisShardInfo> list = new LinkedList<JedisShardInfo>();
 		for (int i = 0; i < serverNum; i++) {
 			JedisShardInfo jedisShardInfo = new JedisShardInfo(
-					bundle.getString(REDIS_IP_PERFIX + i + REDIS_IP_SUFFIX),
-					Integer.valueOf(bundle.getString(REDIS_PORT)));
+					bundle.getString(IP_PERFIX + i + IP_SUFFIX),
+					Integer.valueOf(bundle.getString(PORT)));
 			list.add(jedisShardInfo);
 		}
 		pool = new ShardedJedisPool(config, list);
