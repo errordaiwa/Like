@@ -15,26 +15,26 @@ public abstract class BaseDAO {
 		pool = DBConnectionPool.getInstance();
 	}
 
-	protected void excuteSql(String sql, boolean hasResult, ResultParser parser) {
+	protected boolean excuteSql(String sql, ResultParser parser) {
 		Connection con = pool.getConnection();
 		if (con == null) {
 			Log.w(LOG_TAG, "Failed to get Connection!");
-			return;
+			return false;
 		}
 		try {
 			Statement statement = null;
 			try {
 				statement = con.createStatement();
-				if (hasResult) {
-					ResultSet result = statement.executeQuery(sql);
+				if (statement.execute(sql)) {
+					ResultSet result = statement.getResultSet();
 					if (parser != null)
 						parser.parseResult(result);
-				} else {
-					statement.execute(sql);
 				}
+				return true;
 			} catch (SQLException e) {
 				Log.e(LOG_TAG, "Failed to excute SQL!");
 				Log.e(LOG_TAG, Log.getExceptionStackTrace(e));
+				return false;
 			} finally {
 				try {
 					if (statement != null)

@@ -31,7 +31,7 @@ public class FeedDAO extends BaseDAO {
 		String sql = "select * from " + TABLE_NAME + " where " + COLUMN_FEED_ID
 				+ "=" + feedId;
 		final ArrayList<Long> likeUsersList = new ArrayList<Long>();
-		excuteSql(sql, true, new ResultParser() {
+		excuteSql(sql, new ResultParser() {
 
 			@Override
 			public void parseResult(ResultSet resultSet) throws SQLException {
@@ -44,16 +44,16 @@ public class FeedDAO extends BaseDAO {
 		return likeUsersList;
 	}
 
-	public void insert(long feedId, long likeId) {
+	public boolean insert(long feedId, long likeId) {
 		String sql = "insert into " + TABLE_NAME + " (" + COLUMN_FEED_ID + ", "
 				+ COLUMN_LIKE_ID + ") values(" + feedId + "," + likeId + ")";
-		excuteSql(sql, false, null);
+		return excuteSql(sql, null);
 	}
 
-	public void delete(long feedId, long likeId) {
+	public boolean delete(long feedId, long likeId) {
 		String sql = "delete from " + TABLE_NAME + " where " + COLUMN_FEED_ID
 				+ "=" + feedId + " and " + COLUMN_LIKE_ID + "=" + likeId;
-		excuteSql(sql, false, null);
+		return excuteSql(sql, null);
 	}
 
 	public void update(long fromUid, long toUid) {

@@ -12,20 +12,21 @@ public class FriendsDAO extends BaseDAO {
 	private static final String TABLE_NAME = "friends";
 	private static final String COLUMN_FROM_UID = "from_uid";
 	private static final String COLUMN_TO_UID = "to_uid";
-//	private static final String COLUMN_CTIME = "ctime";
+
+	// private static final String COLUMN_CTIME = "ctime";
 
 	public static void main(String[] args) {
 		new FriendsDAO().insert(1, 2);
 		Log.i(LOG_TAG, new FriendsDAO().select(1).get(0).toString());
 	}
-	
+
 	private static FriendsDAO instance = new FriendsDAO();
-	
-	private FriendsDAO(){
+
+	private FriendsDAO() {
 		super();
 	}
-	
-	public static FriendsDAO getInstance(){
+
+	public static FriendsDAO getInstance() {
 		return instance;
 	}
 
@@ -36,7 +37,7 @@ public class FriendsDAO extends BaseDAO {
 				+ " where " + COLUMN_TO_UID + "=" + uid + ")";
 		// System.out.println(sql);
 		final ArrayList<Long> friendsList = new ArrayList<Long>();
-		excuteSql(sql, true, new ResultParser() {
+		excuteSql(sql, new ResultParser() {
 
 			@Override
 			public void parseResult(ResultSet resultSet) throws SQLException {
@@ -49,11 +50,11 @@ public class FriendsDAO extends BaseDAO {
 		return friendsList;
 	}
 
-	public void insert(long fromUid, long toUid) {
+	public boolean insert(long fromUid, long toUid) {
 		String sql = "insert into " + TABLE_NAME + " (" + COLUMN_FROM_UID
 				+ ", " + COLUMN_TO_UID + ") values(" + fromUid + "," + toUid
 				+ ")";
-		excuteSql(sql, false, null);
+		return excuteSql(sql, null);
 	}
 
 	public void delete(long fromUid) {
