@@ -7,7 +7,7 @@ import java.util.List;
 
 import cn.com.sina.like.Utils.Log;
 
-public class FriendsDAO extends BaseDAO {
+public class FriendsDAO extends AbstractDAO {
 	private static final String LOG_TAG = FriendsDAO.class.getSimpleName();
 	private static final String TABLE_NAME = "friends";
 	private static final String COLUMN_FROM_UID = "from_uid";
@@ -16,8 +16,12 @@ public class FriendsDAO extends BaseDAO {
 	// private static final String COLUMN_CTIME = "ctime";
 
 	public static void main(String[] args) {
-		new FriendsDAO().insert(1, 2);
-		Log.i(LOG_TAG, new FriendsDAO().select(1).get(0).toString());
+		
+		FriendsDAO instance = new FriendsDAO();
+		instance.insert(1, 2);
+		instance.insert(1, 2);
+		instance.insert(3, 4);
+		instance.insert(4, 3);
 	}
 
 	private static FriendsDAO instance = new FriendsDAO();
@@ -30,7 +34,7 @@ public class FriendsDAO extends BaseDAO {
 		return instance;
 	}
 
-	public List<Long> select(long uid) {
+	public ArrayList<Long> selectFriendsList(long uid) {
 		String sql = "select * from " + TABLE_NAME + " where "
 				+ COLUMN_FROM_UID + "=" + uid + " and " + COLUMN_TO_UID
 				+ " in (select " + COLUMN_FROM_UID + " from " + TABLE_NAME

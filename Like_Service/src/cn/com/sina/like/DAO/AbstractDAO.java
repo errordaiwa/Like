@@ -7,11 +7,11 @@ import java.sql.Statement;
 
 import cn.com.sina.like.Utils.Log;
 
-public abstract class BaseDAO {
-	private static final String LOG_TAG = BaseDAO.class.getSimpleName();
+public abstract class AbstractDAO {
+	private static final String LOG_TAG = AbstractDAO.class.getSimpleName();
 	protected DBConnectionPool pool;
 
-	protected BaseDAO() {
+	protected AbstractDAO() {
 		pool = DBConnectionPool.getInstance();
 	}
 

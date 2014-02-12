@@ -5,7 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FeedDAO extends BaseDAO {
+import cn.com.sina.like.Cache.LikeRedisClient;
+import cn.com.sina.like.Utils.Log;
+
+public class FeedDAO extends AbstractDAO {
 	private static final String LOG_TAG = FeedDAO.class.getSimpleName();
 	private static final String TABLE_NAME = "feed";
 	private static final String COLUMN_FEED_ID = "feed_id";
@@ -27,7 +30,7 @@ public class FeedDAO extends BaseDAO {
 		return instance;
 	}
 
-	public List<Long> selectLikeUsers(long feedId) {
+	public ArrayList<Long> selectLikeUsers(long feedId) {
 		String sql = "select * from " + TABLE_NAME + " where " + COLUMN_FEED_ID
 				+ "=" + feedId;
 		final ArrayList<Long> likeUsersList = new ArrayList<Long>();
