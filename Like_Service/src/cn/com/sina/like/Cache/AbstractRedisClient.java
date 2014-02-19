@@ -90,10 +90,9 @@ public abstract class AbstractRedisClient {
 	/*
 	 * 从cache中获取key对应的list
 	 */
-	protected List<String> getList(String key) {
+	public List<String> getList(String key) {
 		ShardedJedis connection = pool.getResource();
-		long length = connection.llen(key);
-		List<String> list = connection.lrange(key, 0, length);
+		List<String> list = connection.lrange(key, 0, -1);
 		pool.returnResource(connection);
 		return list;
 	}

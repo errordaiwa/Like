@@ -3,10 +3,6 @@ package cn.com.sina.like.DAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-
-import cn.com.sina.like.Cache.LikeRedisClient;
-import cn.com.sina.like.Utils.Log;
 
 public class FeedDAO extends AbstractDAO {
 	private static final String LOG_TAG = FeedDAO.class.getSimpleName();

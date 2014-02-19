@@ -41,12 +41,12 @@ public class LikeService implements ILikeService {
 	@Override
 	public long getLikeUsersCount(long feedId) {
 		String feedIdString = FEED_PREFIX + feedId;
-		long count = 0L;
-		if (redisClient.exists(feedIdString)) {
-			// 减去哨兵的计数
-			count = redisClient.getListLen(feedIdString) - 1;
-		} else {
+		long count = redisClient.getListLen(feedIdString);
+		if (count == 0) {
 			count = copyFeedToCache(feedId).size();
+		} else {
+			// 减去哨兵的计数
+			count--;
 		}
 		return count;
 	}
@@ -64,19 +64,29 @@ public class LikeService implements ILikeService {
 		String feedIdString = FEED_PREFIX + feedId;
 		ArrayList<Long> userFriends = null;
 		ArrayList<Long> likeUsers = null;
-		if (redisClient.exists(userIdString)) {
-			userFriends = redisClient.getListLong(userIdString);
-		} else {
-			userFriends = copyFriendToCache(userId);
+		userFriends = redisClient.getListLong(userIdString);
+		if (userFriends != null) {
+			if (userFriends.size() == 0) {
+				// 没有哨兵，cache中不存在该key
+				userFriends = copyFriendToCache(userId);
+			} else {
+				// 移除哨兵
+				userFriends.remove(new Long(-1L));
+			}
 		}
-		if (redisClient.exists(feedIdString)) {
-			likeUsers = redisClient.getListLong(feedIdString);
-		} else {
-			likeUsers = copyFeedToCache(feedId);
+		likeUsers = redisClient.getListLong(feedIdString);
+		if (likeUsers != null) {
+			if (likeUsers.size() == 0) {
+				// 没有哨兵，cache中不存在该key
+				likeUsers = copyFeedToCache(userId);
+			} else {
+				// 移除哨兵
+				likeUsers.remove(new Long(-1L));
+			}
 		}
 		List<Long> result = null;
 		if (likeUsers.removeAll(userFriends)) {
-			userFriends.removeAll(likeUsers);
+			userFriends.retainAll(likeUsers);
 			userFriends.addAll(likeUsers);
 			if (userFriends.size() > startNum) {
 				result = userFriends.subList(startNum,
@@ -86,11 +96,9 @@ public class LikeService implements ILikeService {
 		} else {
 			if (likeUsers.size() > startNum) {
 				result = likeUsers.subList(startNum, startNum + num < likeUsers
-						.size() ? startNum + num : likeUsers.size() - 1);
+						.size() ? startNum + num : likeUsers.size());
 			}
 		}
-		// 移除哨兵
-		result.remove(new Long(-1L));
 		return result;
 	}
 

@@ -12,8 +12,8 @@ public class CacheTest {
 	private AtomicLong testKey;
 
 	public static void main(String[] args) throws InterruptedException {
-//		new CacheTest().startGetTest();
-		 new CacheTest().startSetTest();
+		new CacheTest().startGetTest();
+//		 new CacheTest().startSetTest();
 	}
 
 	public CacheTest() {
@@ -60,9 +60,8 @@ public class CacheTest {
 
 		@Override
 		public void run() {
-			for (int i = 0; i < 1000; i++) {
-				testKey.incrementAndGet();
-				String key = "user_" + testKey;
+			for (int i = 0; i < 100; i++) {
+				String key = "user_" + testKey.incrementAndGet();
 				LikeRedisClient.getInstance().setListLong(key, testList);
 			}
 			threadsSignal.countDown();
@@ -79,9 +78,8 @@ public class CacheTest {
 
 		@Override
 		public void run() {
-			for (int i = 0; i < 1000; i++) {
-				testKey.incrementAndGet();
-				String key = "user_" + testKey;
+			for (int i = 0; i < 100; i++) {
+				String key = "user_" + testKey.incrementAndGet();
 				LikeRedisClient.getInstance().getListLong(key);
 			}
 			threadsSignal.countDown();

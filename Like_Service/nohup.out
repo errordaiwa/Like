@@ -1,0 +1,323 @@
+[11599] 12 Feb 17:32:41.919 * Max number of open files set to 10032
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.3 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 11599
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[11599] 12 Feb 17:32:41.931 # Server started, Redis version 2.8.3
+[11599] 12 Feb 17:32:42.043 * DB loaded from disk: 0.113 seconds
+[11599] 12 Feb 17:32:42.044 * The server is now ready to accept connections on port 6379
+[11612] 12 Feb 17:33:36.353 * Max number of open files set to 10032
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.3 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 11612
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[11612] 12 Feb 17:33:36.354 # Server started, Redis version 2.8.3
+[11612] 12 Feb 17:33:36.473 * DB loaded from disk: 0.119 seconds
+[11612] 12 Feb 17:33:36.473 * The server is now ready to accept connections on port 6379
+[11616] 12 Feb 17:33:45.555 * Max number of open files set to 10032
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.3 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 11616
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[11616] 12 Feb 17:33:45.556 # Server started, Redis version 2.8.3
+[11616] 12 Feb 17:33:45.677 * DB loaded from disk: 0.121 seconds
+[11616] 12 Feb 17:33:45.677 * The server is now ready to accept connections on port 6379
+[11616] 12 Feb 17:34:46.038 * 10000 changes in 60 seconds. Saving...
+[11616] 12 Feb 17:34:46.038 * Background saving started by pid 11749
+[11749] 12 Feb 17:34:46.272 * DB saved on disk
+[11749] 12 Feb 17:34:46.273 * RDB: 1 MB of memory used by copy-on-write
+[11616] 12 Feb 17:34:46.339 * Background saving terminated with success
+[11616] 12 Feb 17:37:32.455 * 10000 changes in 60 seconds. Saving...
+[11616] 12 Feb 17:37:32.455 * Background saving started by pid 12104
+[12104] 12 Feb 17:37:32.735 * DB saved on disk
+[12104] 12 Feb 17:37:32.736 * RDB: 7 MB of memory used by copy-on-write
+[11616] 12 Feb 17:37:32.759 * Background saving terminated with success
+[11616] 12 Feb 17:38:33.028 * 10000 changes in 60 seconds. Saving...
+[11616] 12 Feb 17:38:33.029 * Background saving started by pid 12108
+[12108] 12 Feb 17:38:33.286 * DB saved on disk
+[12108] 12 Feb 17:38:33.287 * RDB: 2 MB of memory used by copy-on-write
+[11616] 12 Feb 17:38:33.330 * Background saving terminated with success
+[11616 | signal handler] (1392197947) Received SIGTERM, scheduling shutdown...
+[11616] 12 Feb 17:39:07.572 # User requested shutdown...
+[11616] 12 Feb 17:39:07.572 * Saving the final RDB snapshot before exiting.
+[11616] 12 Feb 17:39:07.830 * DB saved on disk
+[11616] 12 Feb 17:39:07.830 # Redis is now ready to exit, bye bye...
+[12117] 12 Feb 17:39:18.660 * Max number of open files set to 10032
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.3 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 12117
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[12117] 12 Feb 17:39:18.660 # Server started, Redis version 2.8.3
+[12117] 12 Feb 17:39:18.782 * DB loaded from disk: 0.122 seconds
+[12117] 12 Feb 17:39:18.782 * The server is now ready to accept connections on port 6379
+[12117] 12 Feb 17:40:49.490 * DB saved on disk
+[12117] 12 Feb 17:41:50.061 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 17:41:50.061 * Background saving started by pid 12285
+[12285] 12 Feb 17:41:50.303 * DB saved on disk
+[12285] 12 Feb 17:41:50.304 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 17:41:50.362 * Background saving terminated with success
+[12117] 12 Feb 17:51:42.580 * DB saved on disk
+[12117] 12 Feb 17:52:41.831 * DB saved on disk
+[12117] 12 Feb 17:53:42.006 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 17:53:42.007 * Background saving started by pid 12740
+[12740] 12 Feb 17:53:42.140 * DB saved on disk
+[12740] 12 Feb 17:53:42.141 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 17:53:42.207 * Background saving terminated with success
+[12117] 12 Feb 17:56:25.208 * DB saved on disk
+[12117] 12 Feb 17:57:26.086 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 17:57:26.086 * Background saving started by pid 12888
+[12888] 12 Feb 17:57:26.201 * DB saved on disk
+[12888] 12 Feb 17:57:26.201 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 17:57:26.287 * Background saving terminated with success
+[12117] 12 Feb 17:58:27.066 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 17:58:27.066 * Background saving started by pid 13016
+[13016] 12 Feb 17:58:27.195 * DB saved on disk
+[13016] 12 Feb 17:58:27.196 * RDB: 2 MB of memory used by copy-on-write
+[12117] 12 Feb 17:58:27.266 * Background saving terminated with success
+[12117] 12 Feb 17:58:55.053 * DB saved on disk
+[12117] 12 Feb 17:59:56.032 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 17:59:56.032 * Background saving started by pid 13249
+[13249] 12 Feb 17:59:56.075 * DB saved on disk
+[13249] 12 Feb 17:59:56.076 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 17:59:56.132 * Background saving terminated with success
+[12117] 12 Feb 18:00:44.066 * DB saved on disk
+[12117] 12 Feb 18:01:04.258 * DB saved on disk
+[12117] 12 Feb 18:02:05.037 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 18:02:05.037 * Background saving started by pid 13763
+[13763] 12 Feb 18:02:05.074 * DB saved on disk
+[13763] 12 Feb 18:02:05.074 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 18:02:05.138 * Background saving terminated with success
+[12117] 12 Feb 18:03:31.845 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 18:03:31.846 * Background saving started by pid 13901
+[13901] 12 Feb 18:03:31.870 * DB saved on disk
+[13901] 12 Feb 18:03:31.871 * RDB: 1 MB of memory used by copy-on-write
+[12117] 12 Feb 18:03:31.946 * Background saving terminated with success
+[12117] 12 Feb 18:04:32.017 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 18:04:32.018 * Background saving started by pid 13907
+[13907] 12 Feb 18:04:32.132 * DB saved on disk
+[13907] 12 Feb 18:04:32.133 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 18:04:32.218 * Background saving terminated with success
+[12117] 12 Feb 18:05:33.090 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 18:05:33.090 * Background saving started by pid 14041
+[14041] 12 Feb 18:05:33.355 * DB saved on disk
+[14041] 12 Feb 18:05:33.356 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 18:05:33.391 * Background saving terminated with success
+[12117] 12 Feb 18:18:44.588 * DB saved on disk
+[12117] 12 Feb 18:19:39.514 * DB saved on disk
+[12117] 12 Feb 18:20:40.092 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 18:20:40.092 * Background saving started by pid 14875
+[14875] 12 Feb 18:20:40.351 * DB saved on disk
+[14875] 12 Feb 18:20:40.352 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 18:20:40.393 * Background saving terminated with success
+[12117] 12 Feb 18:21:49.056 * DB saved on disk
+[12117] 12 Feb 18:22:50.032 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 18:22:50.032 * Background saving started by pid 15016
+[15016] 12 Feb 18:22:50.324 * DB saved on disk
+[15016] 12 Feb 18:22:50.325 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 18:22:50.333 * Background saving terminated with success
+[12117] 12 Feb 18:26:18.932 * DB saved on disk
+[12117] 12 Feb 18:27:19.105 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 18:27:19.106 * Background saving started by pid 15370
+[15370] 12 Feb 18:27:19.145 * DB saved on disk
+[15370] 12 Feb 18:27:19.146 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 18:27:19.206 * Background saving terminated with success
+[12117] 12 Feb 18:27:21.260 * DB saved on disk
+[12117] 12 Feb 18:28:29.725 * DB saved on disk
+[12117] 12 Feb 18:30:21.993 * DB saved on disk
+[12117] 12 Feb 18:31:22.013 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 18:31:22.014 * Background saving started by pid 16429
+[16429] 12 Feb 18:31:22.261 * DB saved on disk
+[16429] 12 Feb 18:31:22.262 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 18:31:22.314 * Background saving terminated with success
+[12117] 12 Feb 18:31:28.951 * DB saved on disk
+[12117] 12 Feb 18:32:27.329 * DB saved on disk
+[12117] 12 Feb 18:33:28.102 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 18:33:28.102 * Background saving started by pid 16814
+[16814] 12 Feb 18:33:28.127 * DB saved on disk
+[16814] 12 Feb 18:33:28.128 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 18:33:28.202 * Background saving terminated with success
+[12117] 12 Feb 18:34:25.266 * DB saved on disk
+[12117] 12 Feb 18:35:26.037 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 18:35:26.037 * Background saving started by pid 17312
+[17312] 12 Feb 18:35:26.303 * DB saved on disk
+[17312] 12 Feb 18:35:26.304 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 18:35:26.338 * Background saving terminated with success
+[12117] 12 Feb 19:20:00.082 * 1 changes in 900 seconds. Saving...
+[12117] 12 Feb 19:20:00.106 * Background saving started by pid 18477
+[18477] 12 Feb 19:20:00.476 * DB saved on disk
+[18477] 12 Feb 19:20:00.525 * RDB: 5 MB of memory used by copy-on-write
+[12117] 12 Feb 19:20:00.606 * Background saving terminated with success
+[12117] 12 Feb 19:21:01.130 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 19:21:01.313 * Background saving started by pid 18610
+[18610] 12 Feb 19:21:02.623 * DB saved on disk
+[18610] 12 Feb 19:21:02.997 * RDB: 1 MB of memory used by copy-on-write
+[12117] 12 Feb 19:21:03.022 * Background saving terminated with success
+[12117] 12 Feb 19:22:15.992 * DB saved on disk
+[12117] 12 Feb 19:23:16.095 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 19:23:16.109 * Background saving started by pid 19003
+[19003] 12 Feb 19:23:16.274 * DB saved on disk
+[19003] 12 Feb 19:23:16.302 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 19:23:16.309 * Background saving terminated with success
+[12117] 12 Feb 19:24:48.221 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 19:24:48.221 * Background saving started by pid 19009
+[19009] 12 Feb 19:24:48.397 * DB saved on disk
+[19009] 12 Feb 19:24:48.398 * RDB: 1 MB of memory used by copy-on-write
+[12117] 12 Feb 19:24:48.421 * Background saving terminated with success
+[12117] 12 Feb 19:25:49.068 * 10000 changes in 60 seconds. Saving...
+[12117] 12 Feb 19:25:49.069 * Background saving started by pid 19011
+[19011] 12 Feb 19:25:49.262 * DB saved on disk
+[19011] 12 Feb 19:25:49.263 * RDB: 0 MB of memory used by copy-on-write
+[12117] 12 Feb 19:25:49.269 * Background saving terminated with success
+[12117] 13 Feb 11:30:01.510 * DB saved on disk
+[12117] 13 Feb 11:31:02.098 * 10000 changes in 60 seconds. Saving...
+[12117] 13 Feb 11:31:02.099 * Background saving started by pid 21912
+[21912] 13 Feb 11:31:02.137 * DB saved on disk
+[21912] 13 Feb 11:31:02.163 * RDB: 0 MB of memory used by copy-on-write
+[12117] 13 Feb 11:31:02.199 * Background saving terminated with success
+[12117] 13 Feb 14:54:53.147 * DB saved on disk
+[12117] 13 Feb 14:55:54.067 * 10000 changes in 60 seconds. Saving...
+[12117] 13 Feb 14:55:54.067 * Background saving started by pid 24073
+[24073] 13 Feb 14:55:54.222 * DB saved on disk
+[24073] 13 Feb 14:55:54.248 * RDB: 0 MB of memory used by copy-on-write
+[12117] 13 Feb 14:55:54.268 * Background saving terminated with success
+[12117] 13 Feb 15:02:30.857 * 10 changes in 300 seconds. Saving...
+[12117] 13 Feb 15:02:30.858 * Background saving started by pid 24467
+[24467] 13 Feb 15:02:30.959 * DB saved on disk
+[24467] 13 Feb 15:02:30.959 * RDB: 0 MB of memory used by copy-on-write
+[12117] 13 Feb 15:02:31.058 * Background saving terminated with success
+[12117] 13 Feb 15:03:44.751 * 10000 changes in 60 seconds. Saving...
+[12117] 13 Feb 15:03:44.751 * Background saving started by pid 24642
+[24642] 13 Feb 15:03:44.860 * DB saved on disk
+[24642] 13 Feb 15:03:44.860 * RDB: 1 MB of memory used by copy-on-write
+[12117] 13 Feb 15:03:44.952 * Background saving terminated with success
+[12117] 13 Feb 15:04:45.041 * 10000 changes in 60 seconds. Saving...
+[12117] 13 Feb 15:04:45.042 * Background saving started by pid 24697
+[24697] 13 Feb 15:04:45.224 * DB saved on disk
+[24697] 13 Feb 15:04:45.224 * RDB: 0 MB of memory used by copy-on-write
+[12117] 13 Feb 15:04:45.242 * Background saving terminated with success
+[12117] 13 Feb 15:05:46.028 * 10000 changes in 60 seconds. Saving...
+[12117] 13 Feb 15:05:46.028 * Background saving started by pid 24916
+[24916] 13 Feb 15:05:46.134 * DB saved on disk
+[24916] 13 Feb 15:05:46.134 * RDB: 0 MB of memory used by copy-on-write
+[12117] 13 Feb 15:05:46.228 * Background saving terminated with success
+[12117] 13 Feb 15:14:51.206 * 10 changes in 300 seconds. Saving...
+[12117] 13 Feb 15:14:51.207 * Background saving started by pid 25306
+[25306] 13 Feb 15:14:51.337 * DB saved on disk
+[25306] 13 Feb 15:14:51.368 * RDB: 1 MB of memory used by copy-on-write
+[12117] 13 Feb 15:14:51.414 * Background saving terminated with success
+[12117] 13 Feb 15:15:52.015 * 10000 changes in 60 seconds. Saving...
+[12117] 13 Feb 15:15:52.016 * Background saving started by pid 25312
+[25312] 13 Feb 15:15:52.221 * DB saved on disk
+[25312] 13 Feb 15:15:52.222 * RDB: 0 MB of memory used by copy-on-write
+[12117] 13 Feb 15:15:52.316 * Background saving terminated with success
+[12117] 13 Feb 15:38:34.186 * 1 changes in 900 seconds. Saving...
+[12117] 13 Feb 15:38:34.237 * Background saving started by pid 25978
+[25978] 13 Feb 15:38:34.573 * DB saved on disk
+[25978] 13 Feb 15:38:34.592 * RDB: 1 MB of memory used by copy-on-write
+[12117] 13 Feb 15:38:34.649 * Background saving terminated with success
+[12117] 13 Feb 15:41:18.561 * 10000 changes in 60 seconds. Saving...
+[12117] 13 Feb 15:41:18.564 * Background saving started by pid 26221
+[26221] 13 Feb 15:41:18.934 * DB saved on disk
+[26221] 13 Feb 15:41:18.968 * RDB: 2 MB of memory used by copy-on-write
+[12117] 13 Feb 15:41:18.970 * Background saving terminated with success
+[12117] 13 Feb 15:42:19.052 * 10000 changes in 60 seconds. Saving...
+[12117] 13 Feb 15:42:19.052 * Background saving started by pid 26229
+[26229] 13 Feb 15:42:19.292 * DB saved on disk
+[26229] 13 Feb 15:42:19.293 * RDB: 1 MB of memory used by copy-on-write
+[12117] 13 Feb 15:42:19.353 * Background saving terminated with success
+[12117] 13 Feb 15:47:20.080 * 10 changes in 300 seconds. Saving...
+[12117] 13 Feb 15:47:20.163 * Background saving started by pid 27421
+[27421] 13 Feb 15:47:20.605 * DB saved on disk
+[27421] 13 Feb 15:47:20.634 * RDB: 0 MB of memory used by copy-on-write
+[12117] 13 Feb 15:47:20.663 * Background saving terminated with success
+[12117] 13 Feb 16:05:00.093 * 1 changes in 900 seconds. Saving...
+[12117] 13 Feb 16:05:00.113 * Background saving started by pid 28131
+[28131] 13 Feb 16:05:00.366 * DB saved on disk
+[28131] 13 Feb 16:05:00.393 * RDB: 0 MB of memory used by copy-on-write
+[12117] 13 Feb 16:05:00.413 * Background saving terminated with success
+[12117] 14 Feb 13:02:25.692 * 1 changes in 900 seconds. Saving...
+[12117] 14 Feb 13:02:25.936 * Background saving started by pid 9864
+[9864] 14 Feb 13:02:26.736 * DB saved on disk
+[9864] 14 Feb 13:02:26.770 * RDB: 2 MB of memory used by copy-on-write
+[12117] 14 Feb 13:02:26.839 * Background saving terminated with success
+[12117] 14 Feb 13:03:27.103 * 10000 changes in 60 seconds. Saving...
+[12117] 14 Feb 13:03:27.149 * Background saving started by pid 9866
+[9866] 14 Feb 13:03:27.496 * DB saved on disk
+[9866] 14 Feb 13:03:27.516 * RDB: 1 MB of memory used by copy-on-write
+[12117] 14 Feb 13:03:27.550 * Background saving terminated with success
+[12117] 14 Feb 13:04:28.007 * 10000 changes in 60 seconds. Saving...
+[12117] 14 Feb 13:04:28.008 * Background saving started by pid 10084
+[10084] 14 Feb 13:04:28.282 * DB saved on disk
+[10084] 14 Feb 13:04:28.283 * RDB: 1 MB of memory used by copy-on-write
+[12117] 14 Feb 13:04:28.308 * Background saving terminated with success
+[12117] 14 Feb 13:05:29.078 * 10000 changes in 60 seconds. Saving...
+[12117] 14 Feb 13:05:29.133 * Background saving started by pid 10302
+[10302] 14 Feb 13:05:29.446 * DB saved on disk
+[10302] 14 Feb 13:05:29.472 * RDB: 1 MB of memory used by copy-on-write
+[12117] 14 Feb 13:05:29.533 * Background saving terminated with success
+[12117] 14 Feb 13:06:30.092 * 10000 changes in 60 seconds. Saving...
+[12117] 14 Feb 13:06:30.092 * Background saving started by pid 10467
+[10467] 14 Feb 13:06:30.366 * DB saved on disk
+[10467] 14 Feb 13:06:30.367 * RDB: 1 MB of memory used by copy-on-write
+[12117] 14 Feb 13:06:30.393 * Background saving terminated with success
+[12117 | signal handler] (1392360515) Received SIGTERM, scheduling shutdown...
+[12117] 14 Feb 14:48:35.549 # User requested shutdown...
+[12117] 14 Feb 14:48:35.549 * Saving the final RDB snapshot before exiting.
+[12117] 14 Feb 14:48:35.992 * DB saved on disk
+[12117] 14 Feb 14:48:35.992 # Redis is now ready to exit, bye bye...

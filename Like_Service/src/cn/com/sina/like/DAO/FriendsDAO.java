@@ -39,7 +39,6 @@ public class FriendsDAO extends AbstractDAO {
 				+ COLUMN_FROM_UID + "=" + uid + " and " + COLUMN_TO_UID
 				+ " in (select " + COLUMN_FROM_UID + " from " + TABLE_NAME
 				+ " where " + COLUMN_TO_UID + "=" + uid + ")";
-		// System.out.println(sql);
 		final ArrayList<Long> friendsList = new ArrayList<Long>();
 		excuteSql(sql, new ResultParser() {
 
