@@ -131,8 +131,8 @@ public class ProjectRowCountTotally {
   return array;
  }
 
- public static void main(String args[]) {
-  ProjectRowCountTotally counter = new ProjectRowCountTotally("/home/su/workspace/Like/Like_Service/src");
- }
+// public static void main(String args[]) {
+//  ProjectRowCountTotally counter = new ProjectRowCountTotally("/home/su/workspace/Like/Like_Service/src");
+// }
 
 }

@@ -3,7 +3,6 @@ package cn.com.sina.like.Test;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
 
-import cn.com.sina.like.Cache.LikeRedisClient;
 import cn.com.sina.like.DAO.FeedDAO;
 import cn.com.sina.like.DAO.FriendsDAO;
 import cn.com.sina.like.WebService.LikeService;
@@ -20,9 +19,10 @@ public class ServiceTest {
 		// new ServiceTest().setLikeTest();
 		new ServiceTest().GetUserCountTest();
 		// System.out.println(new LikeService().getLikeUsersList(8088, 88663,
-		// 20, 0));
+		// 20,
+		// 0));
 		// new LikeService().setLike(61, 88663);
-		
+
 	}
 
 	public void insertDataToDB() throws InterruptedException {
@@ -67,11 +67,11 @@ public class ServiceTest {
 	public void GetUserCountTest() throws InterruptedException {
 		long startTime = System.currentTimeMillis();
 		System.out.println(startTime);
-		CountDownLatch threadsSignal = new CountDownLatch(20);
-		for (int i = 0; i < 10; i++) {
+		CountDownLatch threadsSignal = new CountDownLatch(600);
+		for (int i = 0; i < 300; i++) {
 			new Thread(new GetUserCountThread(threadsSignal)).start();
 		}
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 300; i++) {
 			new Thread(new GetUserListThread(threadsSignal)).start();
 		}
 		threadsSignal.await();
@@ -134,10 +134,10 @@ public class ServiceTest {
 
 		@Override
 		public void run() {
-			for (int i = 0; i < 10000; i++) {
+			for (int i = 0; i < 1000; i++) {
 				long userID = (long) (Math.random() * 10000);
-				new LikeService().getLikeUsersList(userID,
-						testKey.incrementAndGet(), 20, 0);
+				long feedid = (long) (Math.random() * 100000);
+				new LikeService().getLikeUsersList(userID, feedid, 20, 0);
 				// LikeRedisClient.getInstance().getListLong("feed_" +
 				// testKey.incrementAndGet());
 
@@ -156,8 +156,8 @@ public class ServiceTest {
 
 		@Override
 		public void run() {
-			for (int i = 0; i < 10000; i++) {
-				long feedid = testKey.incrementAndGet();
+			for (int i = 0; i < 1000; i++) {
+				long feedid = (long) (Math.random() * 100000);
 				new LikeService().getLikeUsersCount(feedid);
 			}
 			threadsSignal.countDown();

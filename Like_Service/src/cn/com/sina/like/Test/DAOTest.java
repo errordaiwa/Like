@@ -12,10 +12,10 @@ public class DAOTest {
 		feedId =  new AtomicLong(0L);
 	}
 	
-	public static void main(String[] args) throws InterruptedException{
-//		new DAOTest().insertTest();
-		new DAOTest().selectTest();
-	}
+//	public static void main(String[] args) throws InterruptedException{
+////		new DAOTest().insertTest();
+//		new DAOTest().selectTest();
+//	}
 	
 	public void insertTest() throws InterruptedException{
 		long startTime = System.currentTimeMillis();

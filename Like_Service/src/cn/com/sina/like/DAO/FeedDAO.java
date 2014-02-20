@@ -12,12 +12,6 @@ public class FeedDAO extends AbstractDAO {
 
 	private static FeedDAO instance = new FeedDAO();
 	
-	public static void main(String[] ags){
-		FeedDAO.getInstance().insert(1, 1);
-		FeedDAO.getInstance().insert(1, 2);
-		FeedDAO.getInstance().insert(1, 3);
-	}
-
 	private FeedDAO() {
 		super();
 	}

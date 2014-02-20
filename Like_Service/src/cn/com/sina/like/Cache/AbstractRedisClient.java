@@ -9,9 +9,7 @@ import redis.clients.jedis.JedisShardInfo;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
 
-public abstract class AbstractRedisClient {
-
-	private static final String CONFIG_NAME = "cn.com.sina.like.Cache.redis";
+abstract class AbstractRedisClient {
 	private static final String MAX_ACTIVE = "config.maxActive";
 	private static final String MAX_IDLE = "config.maxIdle";
 	private static final String MAX_WAIT = "config.maxWait";
@@ -23,16 +21,16 @@ public abstract class AbstractRedisClient {
 	private static final String PORT_PERFIX = "server";
 	private static final String PORT_SUFFIX = ".port";
 
-	protected static ShardedJedisPool pool;
+	protected ShardedJedisPool pool;
 
-	protected AbstractRedisClient() {
-		ResourceBundle bundle = ResourceBundle.getBundle(CONFIG_NAME);
+	protected AbstractRedisClient(String configName) {
+		ResourceBundle bundle = ResourceBundle.getBundle(configName);
 		if (bundle == null) {
 			throw new IllegalArgumentException(
 					"[redis.properties] is not found!");
 		}
 		JedisPoolConfig config = new JedisPoolConfig();
-		//从redis.propertie中读取Redis pool的配置
+		// 从redis.propertie中读取Redis pool的配置
 		config.setMaxActive(Integer.valueOf(bundle.getString(MAX_ACTIVE)));
 		config.setMaxIdle(Integer.valueOf(bundle.getString(MAX_IDLE)));
 		config.setMaxWait(Long.valueOf(bundle.getString(MAX_WAIT)));
@@ -43,7 +41,8 @@ public abstract class AbstractRedisClient {
 		for (int i = 1; i <= serverNum; i++) {
 			JedisShardInfo jedisShardInfo = new JedisShardInfo(
 					bundle.getString(IP_PERFIX + i + IP_SUFFIX),
-					Integer.valueOf(bundle.getString(PORT_PERFIX + i + PORT_SUFFIX)));
+					Integer.valueOf(bundle.getString(PORT_PERFIX + i
+							+ PORT_SUFFIX)));
 			list.add(jedisShardInfo);
 		}
 		pool = new ShardedJedisPool(config, list);
@@ -52,7 +51,7 @@ public abstract class AbstractRedisClient {
 	/*
 	 * 向cache中插入key-value键值对
 	 */
-	protected void setValue(String key, String value) {
+	public void setValue(String key, String value) {
 		ShardedJedis connection = pool.getResource();
 		connection.set(key, value);
 		pool.returnResource(connection);
@@ -61,7 +60,7 @@ public abstract class AbstractRedisClient {
 	/*
 	 * 从cache中获取key对应的单个value
 	 */
-	protected  String getValue(String key) {
+	public String getValue(String key) {
 		ShardedJedis connection = pool.getResource();
 		String valueString = connection.get(key);
 		pool.returnResource(connection);
@@ -71,22 +70,22 @@ public abstract class AbstractRedisClient {
 	/*
 	 * 从cache中移除key-value键值对
 	 */
-	protected long deleteValue(String key) {
+	public long deleteValue(String key) {
 		ShardedJedis connection = pool.getResource();
 		long result = connection.del(key);
 		pool.returnResource(connection);
 		return result;
 	}
-	
+
 	/*
 	 * 向cache中插入key-valueList键值对
 	 */
-	protected void setList(String key, String[] values) {
+	public void setList(String key, String[] values) {
 		ShardedJedis connection = pool.getResource();
 		connection.lpush(key, values);
 		pool.returnResource(connection);
 	}
-	
+
 	/*
 	 * 从cache中获取key对应的list
 	 */
@@ -96,7 +95,7 @@ public abstract class AbstractRedisClient {
 		pool.returnResource(connection);
 		return list;
 	}
-	
+
 	/*
 	 * 若List存在，则操作成功返回true；反之则返回false
 	 */
@@ -106,7 +105,7 @@ public abstract class AbstractRedisClient {
 		pool.returnResource(connection);
 		return result != 0L;
 	}
-	
+
 	/*
 	 * 返回删除的元素个数，若List中不含该元素或List不存在，则返回0
 	 */
@@ -116,7 +115,7 @@ public abstract class AbstractRedisClient {
 		pool.returnResource(connection);
 		return result;
 	}
-	
+
 	/*
 	 * 检查传入的key是否已经存在于cache中
 	 */
@@ -126,7 +125,7 @@ public abstract class AbstractRedisClient {
 		pool.returnResource(connection);
 		return isInCache;
 	}
-	
+
 	/*
 	 * 查询该key在cache中对应的list的长度
 	 */

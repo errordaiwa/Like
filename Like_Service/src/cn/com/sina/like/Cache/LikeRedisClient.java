@@ -6,17 +6,12 @@ import java.util.List;
 import redis.clients.jedis.ShardedJedis;
 
 public class LikeRedisClient extends AbstractRedisClient {
-	private static LikeRedisClient instance = new LikeRedisClient();
 
 	// private static final String LOCK_PERFIX = "lock_";
 	// private static final long EXPIRE_TIME = 500L;
 
-	private LikeRedisClient() {
-		super();
-	}
-
-	public static LikeRedisClient getInstance() {
-		return instance;
+	protected LikeRedisClient(String configName) {
+		super(configName);
 	}
 
 	public void setValueLong(String key, String value) {

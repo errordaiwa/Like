@@ -15,15 +15,6 @@ public class FriendsDAO extends AbstractDAO {
 
 	// private static final String COLUMN_CTIME = "ctime";
 
-	public static void main(String[] args) {
-		
-		FriendsDAO instance = new FriendsDAO();
-		instance.insert(1, 2);
-		instance.insert(1, 2);
-		instance.insert(3, 4);
-		instance.insert(4, 3);
-	}
-
 	private static FriendsDAO instance = new FriendsDAO();
 
 	private FriendsDAO() {

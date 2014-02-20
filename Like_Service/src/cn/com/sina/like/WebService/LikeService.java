@@ -3,13 +3,13 @@ package cn.com.sina.like.WebService;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.com.sina.like.Cache.LikeRedisClient;
+import cn.com.sina.like.Cache.RedisClientManager;
 import cn.com.sina.like.DAO.FeedDAO;
 import cn.com.sina.like.DAO.FriendsDAO;
 
 public class LikeService implements ILikeService {
 	private static final String LOG_TAG = LikeService.class.getSimpleName();
-	private LikeRedisClient redisClient = LikeRedisClient.getInstance();
+	private RedisClientManager redisClientMgr = RedisClientManager.getInstance();
 	private FriendsDAO friendDao = FriendsDAO.getInstance();
 	private FeedDAO feedDAO = FeedDAO.getInstance();
 
@@ -20,7 +20,7 @@ public class LikeService implements ILikeService {
 	public void setLike(long userId, long feedId) {
 		String feedIdString = FEED_PREFIX + feedId;
 		if (feedDAO.insert(feedId, userId)) {
-			if (!redisClient.addLongToList(feedIdString, userId)) {
+			if (!redisClientMgr.getMaster().addLongToList(feedIdString, userId)) {
 				copyFeedToCache(feedId);
 			}
 		}
@@ -31,7 +31,7 @@ public class LikeService implements ILikeService {
 	public void cancelLike(long userId, long feedId) {
 		String feedIdString = FEED_PREFIX + feedId;
 		if (feedDAO.delete(feedId, userId)) {
-			if (redisClient.deleteLongFromList(feedIdString, userId) == 0L) {
+			if (redisClientMgr.getMaster().deleteLongFromList(feedIdString, userId) == 0L) {
 				copyFeedToCache(feedId);
 			}
 		}
@@ -41,9 +41,9 @@ public class LikeService implements ILikeService {
 	@Override
 	public long getLikeUsersCount(long feedId) {
 		String feedIdString = FEED_PREFIX + feedId;
-		long count = redisClient.getListLen(feedIdString);
+		long count = redisClientMgr.getOneClient().getListLen(feedIdString);
 		if (count == 0) {
-			count = copyFeedToCache(feedId).size();
+//			count = copyFeedToCache(feedId).size();
 		} else {
 			// 减去哨兵的计数
 			count--;
@@ -53,7 +53,7 @@ public class LikeService implements ILikeService {
 
 	private ArrayList<Long> copyFeedToCache(long feedId) {
 		ArrayList<Long> likeUsers = feedDAO.selectLikeUsers(feedId);
-		redisClient.setListLong(FEED_PREFIX + feedId, likeUsers);
+		redisClientMgr.getMaster().setListLong(FEED_PREFIX + feedId, likeUsers);
 		return likeUsers;
 	}
 
@@ -64,21 +64,21 @@ public class LikeService implements ILikeService {
 		String feedIdString = FEED_PREFIX + feedId;
 		ArrayList<Long> userFriends = null;
 		ArrayList<Long> likeUsers = null;
-		userFriends = redisClient.getListLong(userIdString);
+		userFriends = redisClientMgr.getOneClient().getListLong(userIdString);
 		if (userFriends != null) {
 			if (userFriends.size() == 0) {
 				// 没有哨兵，cache中不存在该key
-				userFriends = copyFriendToCache(userId);
+//				userFriends = copyFriendToCache(userId);
 			} else {
 				// 移除哨兵
 				userFriends.remove(new Long(-1L));
 			}
 		}
-		likeUsers = redisClient.getListLong(feedIdString);
+		likeUsers = redisClientMgr.getOneClient().getListLong(feedIdString);
 		if (likeUsers != null) {
 			if (likeUsers.size() == 0) {
 				// 没有哨兵，cache中不存在该key
-				likeUsers = copyFeedToCache(userId);
+//				likeUsers = copyFeedToCache(userId);
 			} else {
 				// 移除哨兵
 				likeUsers.remove(new Long(-1L));
@@ -104,7 +104,7 @@ public class LikeService implements ILikeService {
 
 	private ArrayList<Long> copyFriendToCache(long userId) {
 		ArrayList<Long> friends = friendDao.selectFriendsList(userId);
-		redisClient.setListLong(USER_PREFIX + userId, friends);
+		redisClientMgr.getMaster().setListLong(USER_PREFIX + userId, friends);
 		return friends;
 	}
 }
