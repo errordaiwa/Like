@@ -67,11 +67,11 @@ public class ServiceTest {
 	public void GetUserCountTest() throws InterruptedException {
 		long startTime = System.currentTimeMillis();
 		System.out.println(startTime);
-		CountDownLatch threadsSignal = new CountDownLatch(600);
-		for (int i = 0; i < 300; i++) {
+		CountDownLatch threadsSignal = new CountDownLatch(200);
+		for (int i = 0; i < 100; i++) {
 			new Thread(new GetUserCountThread(threadsSignal)).start();
 		}
-		for (int i = 0; i < 300; i++) {
+		for (int i = 0; i < 100; i++) {
 			new Thread(new GetUserListThread(threadsSignal)).start();
 		}
 		threadsSignal.await();
