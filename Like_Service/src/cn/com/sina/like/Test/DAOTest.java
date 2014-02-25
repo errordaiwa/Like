@@ -7,17 +7,17 @@ import cn.com.sina.like.DAO.FeedDAO;
 
 public class DAOTest {
 	private AtomicLong feedId;
-	
-	public DAOTest(){
-		feedId =  new AtomicLong(0L);
+
+	public DAOTest() {
+		feedId = new AtomicLong(0L);
 	}
-	
-//	public static void main(String[] args) throws InterruptedException{
-////		new DAOTest().insertTest();
-//		new DAOTest().selectTest();
-//	}
-	
-	public void insertTest() throws InterruptedException{
+
+	// public static void main(String[] args) throws InterruptedException{
+	// // new DAOTest().insertTest();
+	// new DAOTest().selectTest();
+	// }
+
+	public void insertTest() throws InterruptedException {
 		long startTime = System.currentTimeMillis();
 		System.out.println(startTime);
 		CountDownLatch threadsSignal = new CountDownLatch(100);
@@ -29,8 +29,8 @@ public class DAOTest {
 		System.out.println(endTime);
 		System.out.println(endTime - startTime);
 	}
-	
-	public void selectTest() throws InterruptedException{
+
+	public void selectTest() throws InterruptedException {
 		long startTime = System.currentTimeMillis();
 		System.out.println(startTime);
 		CountDownLatch threadsSignal = new CountDownLatch(100);
@@ -54,13 +54,13 @@ public class DAOTest {
 		public void run() {
 			long feedIdLong = feedId.incrementAndGet();
 			for (int i = 0; i < 100; i++) {
-				FeedDAO.getInstance().insert(feedIdLong, i);
+				FeedDAO.getInstance().insert(feedIdLong + "", i + "");
 			}
 			threadsSignal.countDown();
 		}
 
 	}
-	
+
 	class SelectThread implements Runnable {
 		private CountDownLatch threadsSignal;
 
@@ -72,7 +72,7 @@ public class DAOTest {
 		public void run() {
 			long feedIdLong = feedId.incrementAndGet();
 			for (int i = 0; i < 100; i++) {
-				FeedDAO.getInstance().selectLikeUsers(feedIdLong);
+				FeedDAO.getInstance().selectLikeUsers(feedIdLong + "");
 			}
 			threadsSignal.countDown();
 		}

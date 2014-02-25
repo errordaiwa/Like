@@ -22,14 +22,14 @@ public class LikeService implements ILikeService {
 
 	public static void main(String[] args) {
 		System.out
-				.println(new LikeService().getLikeUsersList(2209, 100, 20, 0));
+				.println(new LikeService().getLikeUsersList("2209", "100", 20, 0));
 	}
 
 	@Override
-	public void setLike(long userId, long feedId) {
+	public void setLike(String userId, String feedId) {
 		String feedIdString = FEED_PREFIX + feedId;
 		if (feedDAO.insert(feedId, userId)) {
-			if (!redisClientMgr.getMaster().addLongToList(feedIdString, userId)) {
+			if (!redisClientMgr.getMaster().addToList(feedIdString, userId)) {
 				copyFeedToCache(feedId);
 			}
 		}
@@ -37,11 +37,10 @@ public class LikeService implements ILikeService {
 	}
 
 	@Override
-	public void cancelLike(long userId, long feedId) {
+	public void cancelLike(String userId, String feedId) {
 		String feedIdString = FEED_PREFIX + feedId;
 		if (feedDAO.delete(feedId, userId)) {
-			if (redisClientMgr.getMaster().deleteLongFromList(feedIdString,
-					userId) == 0L) {
+			if (redisClientMgr.getMaster().deleteFromList(feedIdString, userId) == 0L) {
 				copyFeedToCache(feedId);
 			}
 		}
@@ -49,7 +48,7 @@ public class LikeService implements ILikeService {
 	}
 
 	@Override
-	public long getLikeUsersCount(long feedId) {
+	public long getLikeUsersCount(String feedId) {
 		String feedIdString = FEED_PREFIX + feedId;
 		long count = redisClientMgr.getOneClient().getListLen(feedIdString);
 		if (count == 0) {
@@ -61,20 +60,20 @@ public class LikeService implements ILikeService {
 		return count;
 	}
 
-	private ArrayList<Long> copyFeedToCache(long feedId) {
-		ArrayList<Long> likeUsers = feedDAO.selectLikeUsers(feedId);
-		redisClientMgr.getMaster().setListLong(FEED_PREFIX + feedId, likeUsers);
+	private ArrayList<String> copyFeedToCache(String feedId) {
+		ArrayList<String> likeUsers = feedDAO.selectLikeUsers(feedId);
+		redisClientMgr.getMaster().setList(FEED_PREFIX + feedId, likeUsers);
 		return likeUsers;
 	}
 
 	@Override
-	public List<Long> getLikeUsersList(long userId, long feedId, int num,
+	public List<String> getLikeUsersList(String userId, String feedId, int num,
 			int startNum) {
 		String userIdString = USER_PREFIX + userId;
 		String feedIdString = FEED_PREFIX + feedId;
-		ArrayList<Long> userFriends = null;
-		ArrayList<Long> likeUsers = null;
-		userFriends = redisClientMgr.getOneClient().getListLong(userIdString);
+		List<String> userFriends = redisClientMgr.getOneClient().getList(
+				userIdString);
+
 		if (userFriends != null) {
 			if (userFriends.size() == 0) {
 				// 没有哨兵，cache中不存在该key
@@ -84,7 +83,8 @@ public class LikeService implements ILikeService {
 				userFriends.remove(new Long(-1L));
 			}
 		}
-		likeUsers = redisClientMgr.getOneClient().getListLong(feedIdString);
+		List<String> likeUsers = redisClientMgr.getOneClient().getList(
+				feedIdString);
 		if (likeUsers != null) {
 			if (likeUsers.size() == 0) {
 				// 没有哨兵，cache中不存在该key
@@ -94,19 +94,19 @@ public class LikeService implements ILikeService {
 				likeUsers.remove(new Long(-1L));
 			}
 		}
-		LinkedList<Long> result = new LinkedList<Long>();
+		LinkedList<String> result = new LinkedList<String>();
 
-		HashSet<Long> userSet = new HashSet<Long>();
-		for (long user : likeUsers) {
+		HashSet<String> userSet = new HashSet<String>();
+		for (String user : likeUsers) {
 			userSet.add(user);
 		}
-		for (long friend : userFriends) {
+		for (String friend : userFriends) {
 			if (userSet.contains(friend)) {
 				result.addFirst(friend);
 				userSet.remove(friend);
 			}
 		}
-		for (long user : userSet) {
+		for (String user : userSet) {
 			result.addLast(user);
 		}
 
@@ -127,12 +127,12 @@ public class LikeService implements ILikeService {
 		return result.subList(
 				startNum < result.size() ? startNum : result.size(), startNum
 						+ num < result.size() ? startNum + num : result.size());
-//		return null;
+		// return null;
 	}
 
-	private ArrayList<Long> copyFriendToCache(long userId) {
-		ArrayList<Long> friends = friendDao.selectFriendsList(userId);
-		redisClientMgr.getMaster().setListLong(USER_PREFIX + userId, friends);
+	private ArrayList<String> copyFriendToCache(String userId) {
+		ArrayList<String> friends = friendDao.selectFriendsList(userId);
+		redisClientMgr.getMaster().setList(USER_PREFIX + userId, friends);
 		return friends;
 	}
 }

@@ -94,10 +94,11 @@ public class ServiceTest {
 				for (int j = 0; j < 50; j++) {
 					long feedId = (long) (Math.random() * 100000);
 					long friendId = (long) (Math.random() * 10000);
-					FeedDAO.getInstance().insert(feedId, userId);
-					FriendsDAO.getInstance().insert(userId, friendId);
+					FeedDAO.getInstance().insert("" + feedId, "" + userId);
+					FriendsDAO.getInstance().insert("" + userId, "" + friendId);
 					if (j % 3 == 0) {
-						FriendsDAO.getInstance().insert(friendId, userId);
+						FriendsDAO.getInstance().insert("" + friendId,
+								"" + userId);
 					}
 				}
 
@@ -117,8 +118,9 @@ public class ServiceTest {
 		@Override
 		public void run() {
 			for (int i = 0; i < 100; i++) {
-				long feedid = (long) (Math.random() * 100000);
-				new LikeService().setLike(testKey.incrementAndGet(), feedid);
+				String feedid = Long.toString((long) (Math.random() * 100000));
+				new LikeService().setLike(
+						Long.toString(testKey.incrementAndGet()), feedid);
 
 			}
 			threadsSignal.countDown();
@@ -135,8 +137,8 @@ public class ServiceTest {
 		@Override
 		public void run() {
 			for (int i = 0; i < 3000; i++) {
-				long userID = (long) (Math.random() * 10000);
-				long feedid = (long) (Math.random() * 100000);
+				String userID = Long.toString((long) (Math.random() * 10000));
+				String feedid = Long.toString((long) (Math.random() * 100000));
 				new LikeService().getLikeUsersList(userID, feedid, 20, 0);
 				// LikeRedisClient.getInstance().getListLong("feed_" +
 				// testKey.incrementAndGet());
@@ -157,7 +159,7 @@ public class ServiceTest {
 		@Override
 		public void run() {
 			for (int i = 0; i < 3000; i++) {
-				long feedid = (long) (Math.random() * 100000);
+				String feedid = Long.toString((long) (Math.random() * 100000));
 				new LikeService().getLikeUsersCount(feedid);
 			}
 			threadsSignal.countDown();

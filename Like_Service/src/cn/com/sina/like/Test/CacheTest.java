@@ -5,23 +5,22 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
 
-import cn.com.sina.like.Cache.LikeRedisClient;
 import cn.com.sina.like.Cache.RedisClientManager;
 
 public class CacheTest {
-	private List<Long> testList;
+	private List<String> testList;
 	private AtomicLong testKey;
 
-//	public static void main(String[] args) throws InterruptedException {
-////		new CacheTest().startGetTest();
-//		 new CacheTest().startSetTest();
-//	}
+	// public static void main(String[] args) throws InterruptedException {
+	// // new CacheTest().startGetTest();
+	// new CacheTest().startSetTest();
+	// }
 
 	public CacheTest() {
-		testList = new ArrayList<Long>();
+		testList = new ArrayList<String>();
 		long tmp = 11111111L;
 		for (int i = 0; i < 100; i++) {
-			testList.add(tmp++);
+			testList.add(tmp++ + "");
 		}
 		testKey = new AtomicLong(0L);
 	}
@@ -63,7 +62,8 @@ public class CacheTest {
 		public void run() {
 			for (int i = 0; i < 100; i++) {
 				String key = "user_" + testKey.incrementAndGet();
-				RedisClientManager.getInstance().getMaster().setListLong(key, testList);
+				RedisClientManager.getInstance().getMaster()
+						.setList(key, testList);
 			}
 			threadsSignal.countDown();
 		}
@@ -81,7 +81,7 @@ public class CacheTest {
 		public void run() {
 			for (int i = 0; i < 100; i++) {
 				String key = "user_" + testKey.incrementAndGet();
-				RedisClientManager.getInstance().getOneClient().getListLong(key);
+				RedisClientManager.getInstance().getOneClient().getList(key);
 			}
 			threadsSignal.countDown();
 		}

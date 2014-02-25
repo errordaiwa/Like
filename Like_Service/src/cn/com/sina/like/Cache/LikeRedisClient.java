@@ -14,15 +14,7 @@ public class LikeRedisClient extends AbstractRedisClient {
 		super(configName);
 	}
 
-	public void setValueLong(String key, String value) {
-		setValue(key, value);
-	}
-
-	public long getValueLong(String key) {
-		return Long.parseLong(getValue(key));
-	}
-
-	public void setListLong(String key, List<Long> list) {
+	public void setList(String key, List<String> list) {
 		ShardedJedis connection = pool.getResource();
 		// 如果已有其他线程将该key写入cache，当前线程将无法获取锁，此时当前线程放弃写入
 		// if (getLock(key)) {
@@ -34,7 +26,7 @@ public class LikeRedisClient extends AbstractRedisClient {
 			// -1L作为哨兵值存在，表示该key已经存在于cache中
 			values[0] = "-1";
 			for (int i = 0; i < list.size(); i++) {
-				values[i + 1] = Long.toString(list.get(i));
+				values[i + 1] = list.get(i);
 			}
 			connection.lpush(key, values);
 			if (connection.llen(key) != list.size() + 1) {
@@ -88,24 +80,8 @@ public class LikeRedisClient extends AbstractRedisClient {
 	// pool.returnResource(connection);
 	// }
 
-	public boolean addLongToList(String key, long value) {
-		return addToList(key, Long.toString(value));
-	}
-	
 //	public boolean addLongToSet(String key, double score, long member) {
 //		return addToSet(key, score, Long.toString(member));
 //	}
 
-	public long deleteLongFromList(String key, long value) {
-		return deleteFromList(key, Long.toString(value));
-	}
-
-	public ArrayList<Long> getListLong(String key) {
-		ArrayList<Long> list = new ArrayList<Long>();
-		List<String> stringList = getList(key);
-		for (String stringValue : stringList) {
-			list.add(Long.parseLong(stringValue));
-		}
-		return list;
-	}
 }

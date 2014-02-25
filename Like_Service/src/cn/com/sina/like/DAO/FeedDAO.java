@@ -20,36 +20,36 @@ public class FeedDAO extends AbstractDAO {
 		return instance;
 	}
 
-	public ArrayList<Long> selectLikeUsers(long feedId) {
+	public ArrayList<String> selectLikeUsers(String feedId) {
 		String sql = "select * from " + TABLE_NAME + " where " + COLUMN_FEED_ID
 				+ "=" + feedId;
-		final ArrayList<Long> likeUsersList = new ArrayList<Long>();
+		final ArrayList<String> likeUsersList = new ArrayList<String>();
 		excuteSql(sql, new ResultParser() {
 
 			@Override
 			public void parseResult(ResultSet resultSet) throws SQLException {
 
 				while (resultSet.next()) {
-					likeUsersList.add(resultSet.getLong(COLUMN_LIKE_ID));
+					likeUsersList.add(Long.toString(resultSet.getLong(COLUMN_LIKE_ID)));
 				}
 			}
 		});
 		return likeUsersList;
 	}
 
-	public boolean insert(long feedId, long likeId) {
+	public boolean insert(String feedId, String likeId) {
 		String sql = "insert into " + TABLE_NAME + " (" + COLUMN_FEED_ID + ", "
 				+ COLUMN_LIKE_ID + ") values(" + feedId + "," + likeId + ")";
 		return excuteSql(sql, null);
 	}
 
-	public boolean delete(long feedId, long likeId) {
+	public boolean delete(String feedId, String likeId) {
 		String sql = "delete from " + TABLE_NAME + " where " + COLUMN_FEED_ID
 				+ "=" + feedId + " and " + COLUMN_LIKE_ID + "=" + likeId;
 		return excuteSql(sql, null);
 	}
 
-	public void update(long fromUid, long toUid) {
+	public void update(String fromUid, String toUid) {
 		// TODO useless method
 	}
 }

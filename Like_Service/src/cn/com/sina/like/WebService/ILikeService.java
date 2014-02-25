@@ -3,11 +3,11 @@ package cn.com.sina.like.WebService;
 import java.util.List;
 
 public interface ILikeService {
-	void setLike(long userId, long feedId);
+	void setLike(String userId, String feedId);
 	
-	void cancelLike(long userId, long feedId);
+	void cancelLike(String userId, String feedId);
 
-	long getLikeUsersCount(long feedId);
+	long getLikeUsersCount(String feedId);
 
-	List<Long> getLikeUsersList(long userId, long feedId, int num, int startNum);
+	List<String> getLikeUsersList(String userId, String feedId, int num, int startNum);
 }
