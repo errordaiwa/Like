@@ -105,6 +105,16 @@ abstract class AbstractRedisClient {
 		pool.returnResource(connection);
 		return result != 0L;
 	}
+	
+//	/*
+//	 * 若Set存在，则操作成功返回true；反之则返回false
+//	 */
+//	public boolean addToSet(String key, double score, String member) {
+//		ShardedJedis connection = pool.getResource();
+//		long result = connection.zadd(key, score, member);
+//		pool.returnResource(connection);
+//		return result != 0L;
+//	}
 
 	/*
 	 * 返回删除的元素个数，若List中不含该元素或List不存在，则返回0

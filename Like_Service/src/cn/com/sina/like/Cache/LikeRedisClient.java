@@ -91,6 +91,10 @@ public class LikeRedisClient extends AbstractRedisClient {
 	public boolean addLongToList(String key, long value) {
 		return addToList(key, Long.toString(value));
 	}
+	
+//	public boolean addLongToSet(String key, double score, long member) {
+//		return addToSet(key, score, Long.toString(member));
+//	}
 
 	public long deleteLongFromList(String key, long value) {
 		return deleteFromList(key, Long.toString(value));

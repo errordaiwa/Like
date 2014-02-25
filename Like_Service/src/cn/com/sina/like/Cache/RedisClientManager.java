@@ -1,7 +1,12 @@
 package cn.com.sina.like.Cache;
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import cn.com.sina.like.Test.ServiceTest;
 
 public class RedisClientManager {
 	private static final String CONFIG_NAME = "cn.com.sina.like.Cache.redis_client";
@@ -14,7 +19,17 @@ public class RedisClientManager {
 	private ArrayList<LikeRedisClient> clientList;
 
 	private RedisClientManager() {
+//		String path = null;
+//		try {
+//			path = URLDecoder.decode(ServiceTest.class.getProtectionDomain()
+//					.getCodeSource().getLocation().getFile(), "UTF-8");
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		File jarFile = new File(path);
 		ResourceBundle bundle = ResourceBundle.getBundle(CONFIG_NAME);
+
 		if (bundle == null) {
 			throw new IllegalArgumentException(
 					"[redis.properties] is not found!");
@@ -32,12 +47,12 @@ public class RedisClientManager {
 	public static RedisClientManager getInstance() {
 		return instance;
 	}
-	
-	public LikeRedisClient getMaster(){
+
+	public LikeRedisClient getMaster() {
 		return master;
 	}
-	
-	public LikeRedisClient getOneClient(){
-		return clientList.get((int) (Math.random()*clientList.size()));
+
+	public LikeRedisClient getOneClient() {
+		return clientList.get((int) (Math.random() * clientList.size()));
 	}
 }

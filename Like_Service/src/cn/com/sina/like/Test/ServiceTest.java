@@ -134,7 +134,7 @@ public class ServiceTest {
 
 		@Override
 		public void run() {
-			for (int i = 0; i < 1000; i++) {
+			for (int i = 0; i < 3000; i++) {
 				long userID = (long) (Math.random() * 10000);
 				long feedid = (long) (Math.random() * 100000);
 				new LikeService().getLikeUsersList(userID, feedid, 20, 0);
@@ -156,7 +156,7 @@ public class ServiceTest {
 
 		@Override
 		public void run() {
-			for (int i = 0; i < 1000; i++) {
+			for (int i = 0; i < 3000; i++) {
 				long feedid = (long) (Math.random() * 100000);
 				new LikeService().getLikeUsersCount(feedid);
 			}
