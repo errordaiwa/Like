@@ -1,4 +1,4 @@
-package cn.com.sina.like.Utils;
+package cn.com.sina.like.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

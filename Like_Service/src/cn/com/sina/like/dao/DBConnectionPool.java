@@ -1,4 +1,4 @@
-package cn.com.sina.like.DAO;
+package cn.com.sina.like.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

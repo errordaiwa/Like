@@ -1,4 +1,4 @@
-package cn.com.sina.like.WebService;
+package cn.com.sina.like.service;
 
 import java.util.List;
 

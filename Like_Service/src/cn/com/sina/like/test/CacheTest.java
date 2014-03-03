@@ -1,12 +1,12 @@
-package cn.com.sina.like.Test;
+package cn.com.sina.like.test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
 
-import cn.com.sina.like.Cache.LikeRedisClient;
-import cn.com.sina.like.Cache.RedisClientManager;
+import cn.com.sina.like.cache.LikeRedisClient;
+import cn.com.sina.like.cache.RedisClientManager;
 
 public class CacheTest {
 	private List<Long> testList;

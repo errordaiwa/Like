@@ -1,13 +1,13 @@
-package cn.com.sina.like.WebService;
+package cn.com.sina.like.service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
-import cn.com.sina.like.Cache.RedisClientManager;
-import cn.com.sina.like.DAO.FeedDAO;
-import cn.com.sina.like.DAO.FriendsDAO;
+import cn.com.sina.like.cache.RedisClientManager;
+import cn.com.sina.like.dao.FeedDAO;
+import cn.com.sina.like.dao.FriendsDAO;
 
 public class LikeService implements ILikeService {
 	private static final String LOG_TAG = LikeService.class.getSimpleName();

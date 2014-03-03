@@ -1,4 +1,4 @@
-package cn.com.sina.like.Cache;
+package cn.com.sina.like.cache;
 
 import java.util.ArrayList;
 import java.util.List;

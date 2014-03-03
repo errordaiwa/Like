@@ -1,9 +1,9 @@
-package cn.com.sina.like.Test;
+package cn.com.sina.like.test;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
 
-import cn.com.sina.like.DAO.FeedDAO;
+import cn.com.sina.like.dao.FeedDAO;
 
 public class DAOTest {
 	private AtomicLong feedId;

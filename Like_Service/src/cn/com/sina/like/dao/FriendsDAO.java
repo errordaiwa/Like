@@ -1,11 +1,11 @@
-package cn.com.sina.like.DAO;
+package cn.com.sina.like.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.com.sina.like.Utils.Log;
+import cn.com.sina.like.utils.Log;
 
 public class FriendsDAO extends AbstractDAO {
 	private static final String LOG_TAG = FriendsDAO.class.getSimpleName();

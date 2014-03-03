@@ -1,11 +1,11 @@
-package cn.com.sina.like.Test;
+package cn.com.sina.like.test;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
 
-import cn.com.sina.like.DAO.FeedDAO;
-import cn.com.sina.like.DAO.FriendsDAO;
-import cn.com.sina.like.WebService.LikeService;
+import cn.com.sina.like.dao.FeedDAO;
+import cn.com.sina.like.dao.FriendsDAO;
+import cn.com.sina.like.service.LikeService;
 
 public class ServiceTest {
 	private AtomicLong testKey;
@@ -17,11 +17,12 @@ public class ServiceTest {
 	public static void main(String[] args) throws InterruptedException {
 		// new ServiceTest().insertDataToDB();
 		// new ServiceTest().setLikeTest();
-		new ServiceTest().GetUserCountTest();
+//		new ServiceTest().GetUserCountTest();
 		// System.out.println(new LikeService().getLikeUsersList(8088, 88663,
 		// 20,
 		// 0));
 		// new LikeService().setLike(61, 88663);
+		
 
 	}
 
@@ -67,10 +68,10 @@ public class ServiceTest {
 	public void GetUserCountTest() throws InterruptedException {
 		long startTime = System.currentTimeMillis();
 		System.out.println(startTime);
-		CountDownLatch threadsSignal = new CountDownLatch(200);
-		for (int i = 0; i < 100; i++) {
-			new Thread(new GetUserCountThread(threadsSignal)).start();
-		}
+		CountDownLatch threadsSignal = new CountDownLatch(100);
+//		for (int i = 0; i < 100; i++) {
+//			new Thread(new GetUserCountThread(threadsSignal)).start();
+//		}
 		for (int i = 0; i < 100; i++) {
 			new Thread(new GetUserListThread(threadsSignal)).start();
 		}

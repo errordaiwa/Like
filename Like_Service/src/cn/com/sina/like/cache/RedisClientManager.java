@@ -1,4 +1,4 @@
-package cn.com.sina.like.Cache;
+package cn.com.sina.like.cache;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -6,7 +6,7 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import cn.com.sina.like.Test.ServiceTest;
+import cn.com.sina.like.test.ServiceTest;
 
 public class RedisClientManager {
 	private static final String CONFIG_NAME = "cn.com.sina.like.Cache.redis_client";
